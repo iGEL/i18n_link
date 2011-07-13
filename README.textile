@@ -2,7 +2,7 @@ h1. A helper for links in your translations
 
 h2. Why?
 
-I18n is backed right into Rails, and it's great. But if you want to place links inside your translated copies, things get a little messy.
+I18n is baked right into Rails, and it's great. But if you want to place links inside your translated copies, things get a little messy.
 You need to specify the label of your links separately from the rest of the copy. Writing HTML in your translations is even worse.
 
 <pre><code>en:
@@ -23,7 +23,7 @@ gets properly escaped, so you don't have to worry about XSS.
 
 h2. Installation
 
-Just add the following line to your Gemfile:
+Just add the following line to your Gemfile & run @bundle install@:
 
 <pre><code>gem 'i18n_link'</code></pre>
 
@@ -40,13 +40,20 @@ You may also specify options for link_to. Just give a second option named like t
 
 <pre><code><%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html", guide_link_options: {target: '_blank', class: "important"} %></code></pre>
 
+You may pass any kind of object accepted by @link_to@ as the link target, so your loved named routes like
+@article_path(:id => article.id)@ or hashes like @{controller: "articles", action: "index"}@ will all work fine, too.
+
 h2. isit18.com?
 
-Sorry, I'm using Ruby 1.9.2 and didn't took the time to port i18n_link back to Ruby 1.8. You either might update to Ruby 1.9 as well
+Sorry, I'm using Ruby 1.9.2 at the time of writing and didn't took the time to port i18n_link back to Ruby 1.8. You either might update to Ruby 1.9 as well
 or make the port yourself. It's probably a mater of minutes to do so, since the lib is small. Send me a pull request, if you have a port!
 
 h2. Abandoned & outdated?
 
-Everybody hates old and outdated gems, which don't work on with the latest Rails or Ruby version or haven't been updated for ages. 
+Everybody hates old and outdated gems, which don't work on with the latest Rails or Ruby version or haven't been updated for ages.
 Sadly, rubygems is full of such gems. If you improved i18n_link, send me a pull request. If I have not time to support the lib
 anymore, I will happily hand the project over to a new maintainer.
+
+h2. Broken English?
+
+I'm not a native speaker, so you'll probably find some spelling errors or clumsy sentences above. If you do, please send me a message.
