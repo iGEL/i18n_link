@@ -25,4 +25,6 @@ Gem::Specification.new do |s|
     "spec/i18n_link_helper_spec.rb",
     "spec/spec_helper.rb"
   ]
+  s.add_development_dependency('actionpack', '~> 3.0.0')
+  s.add_development_dependency('rspec', '~> 2.6.0')
 end
