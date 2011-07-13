@@ -1,0 +1,60 @@
+h1. A helper for links in your translations
+
+h2. Why?
+
+I18n is backed right into Rails, and it's great. But if you want to place links inside your translated copies, things get a little messy.
+You need to specify the label of your links separately from the rest of the copy. Writing HTML in your translations is even worse.
+
+<pre><code>
+en:
+  copy: "Did you read the %{guide_link}?"
+  copy_guide_link: "Rails I18n guide"
+</code></pre>
+
+<pre><code>
+<%=raw t("copy", guide_link: link_to(t("copy_guide_link"), "http://guides.rubyonrails.org/i18n.html")) %>
+</code></pre>
+
+Wouldn't it be much nicer and easier to understand for your translator to have the whole copy in single label? I18n_link lets you do that:
+
+<pre><code>
+en:
+  copy: "Did you read the %{guide_link:Rails I18n guide}?"
+</code></pre>
+
+<pre><code>
+<%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html" %>
+</code></pre>
+
+h2. Usage
+
+You may have noticed in the example above, that @t_link@ doesn't require @raw@ anymore. Of course, all HTML in the translation
+gets properly escaped, so you don't have to worry about XSS.
+
+You may have as many links inside your translations as you like, and normal interpolations are possible as well:
+
+<pre><code>
+en:
+  copy: "Did you read the %{guide:Rails I18n guide}? It has more than %{advises} useful advises. You may fork the repo at {repo:github}."
+</code></pre>
+
+<pre><code>
+<%=t_link "copy", guide: "http://guides.rubyonrails.org/i18n.html", advices: 100, repo: "https://github.com/lifo/docrails/tree/master/railties/guides" %>
+</code></pre>
+
+You may also specify options for link_to. Just give a second option named like the link + @_options@
+
+<pre><code>
+<%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html", guide_link_options: {target: '_blank', class: "important"} %>
+</code></pre>
+
+h2. isit18.com?
+
+Sorry, I'm using Ruby 1.9.2 and didn't took the time to port i18n_link back to Ruby 1.8. You either might update to Ruby 1.9 as well
+or make the port yourself. It's probably a mater of minutes to do so, since the lib is small. Send me a pull request, if you have a port!
+
+h2. Abandoned & outdated?
+
+Everybody hates old and outdated gems, which don't work on with the latest Rails or Ruby version or haven't been updated for ages. 
+Sadly, rubygems is full of such gems. If you improved i18n_link, send me a pull request. If I have not time to support the lib
+anymore, I will happily hand the project over to a new maintainer.
