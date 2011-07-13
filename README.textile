@@ -5,56 +5,40 @@ h2. Why?
 I18n is backed right into Rails, and it's great. But if you want to place links inside your translated copies, things get a little messy.
 You need to specify the label of your links separately from the rest of the copy. Writing HTML in your translations is even worse.
 
-<pre><code>
-en:
+<pre><code>en:
   copy: "Did you read the %{guide_link}?"
-  copy_guide_link: "Rails I18n guide"
-</code></pre>
+  copy_guide_link: "Rails I18n guide"</code></pre>
 
-<pre><code>
-<%=raw t("copy", guide_link: link_to(t("copy_guide_link"), "http://guides.rubyonrails.org/i18n.html")) %>
-</code></pre>
+<pre><code><%=raw t("copy", guide_link: link_to(t("copy_guide_link"), "http://guides.rubyonrails.org/i18n.html")) %></code></pre>
 
 Wouldn't it be much nicer and easier to understand for your translator to have the whole copy in single label? I18n_link lets you do that:
 
-<pre><code>
-en:
-  copy: "Did you read the %{guide_link:Rails I18n guide}?"
-</code></pre>
+<pre><code>en:
+  copy: "Did you read the %{guide_link:Rails I18n guide}?"</code></pre>
 
-<pre><code>
-<%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html" %>
-</code></pre>
+<pre><code><%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html" %></code></pre>
+
+You may have noticed in the example above, that @t_link@ doesn't require @raw@ anymore. Of course, all HTML in the translation
+gets properly escaped, so you don't have to worry about XSS.
 
 h2. Installation
 
 Just add the following line to your Gemfile:
 
-<pre><code>
-gem 'i18n_link'
-</code></pre>
+<pre><code>gem 'i18n_link'</code></pre>
 
 h2. Usage
 
-You may have noticed in the example above, that @t_link@ doesn't require @raw@ anymore. Of course, all HTML in the translation
-gets properly escaped, so you don't have to worry about XSS.
-
 You may have as many links inside your translations as you like, and normal interpolations are possible as well:
 
-<pre><code>
-en:
-  copy: "Did you read the %{guide:Rails I18n guide}? It has more than %{advises} useful advises. You may fork the repo at {repo:github}."
-</code></pre>
+<pre><code>en:
+  copy: "Did you read the %{guide:Rails I18n guide}? It has more than %{advises} useful advises. You may fork the repo at {repo:github}."</code></pre>
 
-<pre><code>
-<%=t_link "copy", guide: "http://guides.rubyonrails.org/i18n.html", advices: 100, repo: "https://github.com/lifo/docrails/tree/master/railties/guides" %>
-</code></pre>
+<pre><code><%=t_link "copy", guide: "http://guides.rubyonrails.org/i18n.html", advices: 100, repo: "https://github.com/lifo/docrails/tree/master/railties/guides" %></code></pre>
 
 You may also specify options for link_to. Just give a second option named like the link + @_options@
 
-<pre><code>
-<%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html", guide_link_options: {target: '_blank', class: "important"} %>
-</code></pre>
+<pre><code><%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html", guide_link_options: {target: '_blank', class: "important"} %></code></pre>
 
 h2. isit18.com?
 
