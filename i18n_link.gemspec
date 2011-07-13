@@ -14,14 +14,13 @@ Gem::Specification.new do |s|
     "README.textile",
     "lib/i18n_link.rb",
     "lib/i18n_link/helper.rb",
-    #"rails/init.rb",
     "spec/i18n_link_helper_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/igel/i18n_link}
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.5.2}
-  s.summary = %q{A little helper for using }
+  s.summary = %q{A helper for links in your translations}
   s.test_files = [
     "spec/i18n_link_helper_spec.rb",
     "spec/spec_helper.rb"

@@ -26,6 +26,14 @@ en:
 <%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html" %>
 </code></pre>
 
+h2. Installation
+
+Just add the following line to your Gemfile:
+
+<pre><code>
+gem 'i18n_link'
+</code></pre>
+
 h2. Usage
 
 You may have noticed in the example above, that @t_link@ doesn't require @raw@ anymore. Of course, all HTML in the translation
