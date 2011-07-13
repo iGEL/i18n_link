@@ -36,7 +36,7 @@ You may have as many links inside your translations as you like, and normal inte
 
 <pre><code><%=t_link "copy", guide: "http://guides.rubyonrails.org/i18n.html", advices: 100, repo: "https://github.com/lifo/docrails/tree/master/railties/guides" %></code></pre>
 
-You may also specify options for link_to. Just give a second option named like the link + @_options@
+You may also specify options for @link_to@. Just give a second option named like the link + @_options@
 
 <pre><code><%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html", guide_link_options: {target: '_blank', class: "important"} %></code></pre>
 
