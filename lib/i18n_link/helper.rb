@@ -21,6 +21,7 @@ module I18nLink
           tl
         end
       end
+      options.each { |key, value| options[key] = (value.is_a?(String) && !value.html_safe?) ? h(value) : value }
       raw(string % options)
     end
   end

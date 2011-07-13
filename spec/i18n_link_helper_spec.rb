@@ -48,8 +48,18 @@ describe I18nLink::Helper, "#t_link" do
     @view.t_link("test3", :link1 => "http://www.rubyonrails.org", :link2 => "http://www.github.com").should == 'I like <a href="http://www.rubyonrails.org">rails</a> and <a href="http://www.github.com">github</a>.'
   end
   
-  it "should allow normal I18n replacements" do
+  it "should allow normal I18n interpolations" do
     I18n.backend.store_translations(:en, :test4 => "I'm containing a %{link:link to Rails} in the %{position}.")
     @view.t_link("test4", :link => "http://www.rubyonrails.org", :position => "middle").should == 'I\'m containing a <a href="http://www.rubyonrails.org">link to Rails</a> in the middle.'
+  end
+  
+  it "should escape the HTML in normal interpolations" do
+    I18n.backend.store_translations(:en, :test5 => "Hello %{name}.")
+    @view.t_link("test5", :name => '<a href="http://evil.haxor.com">victim</a>').should == 'Hello &lt;a href=&quot;http://evil.haxor.com&quot;&gt;victim&lt;/a&gt;.'
+  end
+  
+  it "should not escape html_safe interpolations" do
+    I18n.backend.store_translations(:en, :test5 => "Hello %{name}.")
+    @view.t_link("test5", :name => '<a href="http://www.rubyonrails.org">Rails</a>'.html_safe).should == 'Hello <a href="http://www.rubyonrails.org">Rails</a>.'
   end
 end
