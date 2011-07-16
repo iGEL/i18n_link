@@ -6,17 +6,17 @@ I18n is baked right into Rails, and it's great. But if you want to place links i
 You need to specify the label of your links separately from the rest of the copy. Writing HTML in your translations is even worse.
 
 <pre><code>en:
-  copy: "Did you read the %{guide_link}?"
-  copy_guide_link: "Rails I18n guide"</code></pre>
+  copy: "Already signed up? %{login}!"
+  copy_login_link: "Log in"</code></pre>
 
-<pre><code><%=raw t("copy", guide_link: link_to(t("copy_guide_link"), "http://guides.rubyonrails.org/i18n.html")) %></code></pre>
+<pre><code><%=raw t("copy", login: link_to(t("copy_login_link"), login_path)) %></code></pre>
 
 Wouldn't it be much nicer and easier to understand for your translator to have the whole copy in single label? I18n_link lets you do that:
 
 <pre><code>en:
-  copy: "Did you read the %{guide_link:Rails I18n guide}?"</code></pre>
+  copy: "Already signed up? %{login:login}!"</code></pre>
 
-<pre><code><%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html" %></code></pre>
+<pre><code><%=t_link "copy", login: login_path %></code></pre>
 
 You may have noticed in the example above, that @t_link@ doesn't require @raw@ anymore. Of course, all HTML in the translation
 gets properly escaped, so you don't have to worry about XSS.
@@ -41,14 +41,16 @@ You may also specify options for @link_to@. Just give a second option named like
 <pre><code><%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html", guide_link_options: {target: '_blank', class: "important"} %></code></pre>
 
 You may pass any kind of object accepted by @link_to@ as the link target, so your loved named routes like
-@article_path(:id => article.id)@ or hashes like @{controller: "articles", action: "index"}@ will all work fine, too.
+@article_path(:id => article.id)@ or hashes like @{controller: "articles", action: "index"}@ will all work fine.
 
 Even nested interpolations are possible:
 
 <pre><code>en:
-  copy: "Did you read this %{link:nice %{guide}}?"</code></pre>
+  copy: "Want to contact %{user}%? %{link:send %{user} a message}!"</code></pre>
 
-<pre><code><%=t_link "copy", link: "http://guides.rubyonrails.org/i18n.html", guide: 'article' %></code></pre>
+<pre><code><%=t_link "copy", link: "mailto:igel@igels.net", user: 'iGEL' %></code></pre>
+
+* Like it? "Flattr me!":https://flattr.com/thing/344929/I18nLink *
 
 h2. isit18.com?
 
