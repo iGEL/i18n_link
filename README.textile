@@ -50,7 +50,7 @@ Even nested interpolations are possible:
 
 <pre><code><%=t_link "copy", link: "mailto:igel@igels.net", user: 'iGEL' %></code></pre>
 
-*Like it? "Flattr me!":https://flattr.com/thing/344929/I18nLink*
+Like it? *"Flattr me!":https://flattr.com/thing/344929/I18nLink*
 
 h2. isit18.com?
 
