@@ -62,4 +62,9 @@ describe I18nLink::Helper, "#t_link" do
     I18n.backend.store_translations(:en, :test5 => "Hello %{name}.")
     @view.t_link("test5", :name => '<a href="http://www.rubyonrails.org">Rails</a>'.html_safe).should == 'Hello <a href="http://www.rubyonrails.org">Rails</a>.'
   end
+  
+  it "should allow interpolations inside of links" do
+    I18n.backend.store_translations(:en, :test6 => "Did you read our %{link:nice %{article}}?")
+    @view.t_link("test6", :link => "/article/2", :article => "article").should == 'Did you read our <a href="/article/2">nice article</a>?'
+  end
 end

@@ -43,6 +43,13 @@ You may also specify options for @link_to@. Just give a second option named like
 You may pass any kind of object accepted by @link_to@ as the link target, so your loved named routes like
 @article_path(:id => article.id)@ or hashes like @{controller: "articles", action: "index"}@ will all work fine, too.
 
+Even nested interpolations are possible:
+
+<pre><code>en:
+  copy: "Did you read this %{link:nice %{guide}}?"</code></pre>
+
+<pre><code><%=t_link "copy", link: "http://guides.rubyonrails.org/i18n.html", guide: 'article' %></code></pre>
+
 h2. isit18.com?
 
 Sorry, I'm using Ruby 1.9.2 at the time of writing and didn't took the time to port i18n_link back to Ruby 1.8. You either might update to Ruby 1.9 as well
