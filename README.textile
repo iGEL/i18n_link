@@ -2,8 +2,7 @@ h1. A helper for links in your translations
 
 h2. Why?
 
-I18n is baked right into Rails, and it's great. But if you want to place links inside your translated copies, things get a little messy.
-You need to specify the label of your links separately from the rest of the copy. Writing HTML in your translations is even worse.
+I18n is baked right into Rails, and it's great. But if you want to place links inside your translated copies, things get a little messy. You need to specify the label of your links separately from the rest of the copy. Writing HTML in your translations is even worse.
 
 <pre><code>en:
   copy: "Already signed up? %{login}!"
@@ -40,8 +39,7 @@ You may also specify options for @link_to@. Just give a second option named like
 
 <pre><code><%=t_link "copy", guide_link: "http://guides.rubyonrails.org/i18n.html", guide_link_options: {target: '_blank', class: "important"} %></code></pre>
 
-You may pass any kind of object accepted by @link_to@ as the link target, so your loved named routes like
-@article_path(:id => article.id)@ or hashes like @{controller: "articles", action: "index"}@ will all work fine.
+You may pass any kind of object accepted by @link_to@ as the link target, so your loved named routes like @article_path(:id => article.id)@ or hashes like @{controller: "articles", action: "index"}@ will all work fine.
 
 Even nested interpolations are possible:
 
@@ -52,16 +50,17 @@ Even nested interpolations are possible:
 
 Like it? *"Flattr me!":https://flattr.com/thing/344929/I18nLink*
 
+h2. Yeah, links are fine, but what about bold or italics?
+
+You're right, I stumpled upon these things in my own project after releasing I18n_link. I'm going to write a new gem called _it_, which will take care of such things and will have a nicer DSL. I18n_link will become a transition gem once _it_ is ready for production.
+
 h2. isit18.com?
 
-Sorry, I'm using Ruby 1.9.2 at the time of writing and didn't took the time to port i18n_link back to Ruby 1.8. You either might update to Ruby 1.9 as well
-or make the port yourself. It's probably a mater of minutes to do so, since the lib is small. Send me a pull request, if you have a port!
+Sorry, I'm using Ruby 1.9.2 at the time of writing and didn't took the time to port i18n_link back to Ruby 1.8. You either might update to Ruby 1.9 as well or make the port yourself. It's probably a mater of minutes to do so, since the lib is small. Send me a pull request, if you have a port!
 
 h2. Abandoned & outdated?
 
-Everybody hates old and outdated gems, which don't work on with the latest Rails or Ruby version or haven't been updated for ages.
-Sadly, rubygems is full of such gems. If you improved i18n_link, send me a pull request. If I have not time to support the lib
-anymore, I will happily hand the project over to a new maintainer.
+Everybody hates old and outdated gems, which don't work on with the latest Rails or Ruby version or haven't been updated for ages. Sadly, rubygems is full of such gems. If you improved i18n_link, send me a pull request. If I have not time to support the lib anymore, I will happily hand the project over to a new maintainer.
 
 h2. Broken English?
 
