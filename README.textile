@@ -52,7 +52,7 @@ Like it? *"Flattr me!":https://flattr.com/thing/344929/I18nLink*
 
 h2. Yeah, links are fine, but what about bold or italics?
 
-You're right, I stumpled upon these things in my own project after releasing I18n_link. I'm going to write a new gem called _it_, which will take care of such things and will have a nicer DSL. I18n_link will become a transition gem once _it_ is ready for production.
+You're right, I stumpled upon these things in my own project after releasing ==I18n_link==. I'm going to write a new gem called _it_, which will take care of such things and will have a nicer DSL. ==I18n_link== will become a transition gem once _it_ is ready for production.
 
 h2. isit18.com?
 
