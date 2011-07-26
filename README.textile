@@ -1,5 +1,5 @@
 i18n_link is just 2 weeks old, but I rewrote it and released a new, more powerful gem called *it*, since the name is not fitting anymore. I recommend it as a general replacement for this project.
 
-https://github.com/iGEL/it
+"https://github.com/iGEL/it":https://github.com/iGEL/it
 
-https://rubygems.org/gems/it
+"https://rubygems.org/gems/it":https://rubygems.org/gems/it
