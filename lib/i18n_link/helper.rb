@@ -6,6 +6,7 @@ module I18nLink
     include ERB::Util
     
     def t_link(translation, options = {})
+      Rails.logger.warn "DEPRECATION WARNING: t_link and the gem i18n_link are deprecated. Consider updating to the new gem 'it'. Called from #{caller.first}"
       options.symbolize_keys!
       string = String.new(h(t(translation))) # We want an escaped String, not an ActiveSupport::SafeBuffer
 
